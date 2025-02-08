@@ -1,8 +1,14 @@
+:root {
+    --primary-color:  #34fcfc;;
+    --secondary-color: #ec23ec;
+    --primary-font: "Exo 2", serif;
+    --secondary-font: "Teko", serif;
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Poppins, sans-serif;
     text-decoration: none;
 }
 
@@ -23,7 +29,8 @@ header {
     position: fixed;
     width: 100%;  
     height: 15%;  
-    background: rgba(34, 34, 34, 0.95);
+    background: rgba(34, 34, 34, 0.7);
+    z-index: 5;
     
 }
 
@@ -59,6 +66,7 @@ nav ul {
 nav ul li a {
     color: #e5e5e5;
     font-weight: 500;
+    font-family: var(--primary-font);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     transition: all 0.3s ease;
@@ -73,7 +81,7 @@ nav ul li a::after {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #007ced;
+    background: #34fcfc;
     transition: width 0.3s ease;
 }
 /*Underline effect*/
@@ -82,7 +90,7 @@ nav ul li a:hover::after {
 }
 /*Underline effect*/
 nav ul li a:hover {
-    color: #007ced;
+    color: #34fcfc;
 }
 nav ul li{
     list-style: none;
@@ -103,8 +111,9 @@ nav ul li{
     height: 300px;
     border-radius: 50%;
     overflow: hidden;
-    border: 15px solid #444;
+    border: 15px solid  #34fcfc;
     box-shadow: 5px 7px 25px rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 .hero-pic img {
@@ -127,12 +136,21 @@ nav ul li{
 }
 
 h1 {
-    font-size: 14px;
+    font-size: 20px;
+    font-family: var(--secondary-font);
+    color: #ec23ec;
 }
 
 h2 {
-    color: #007ced;
+    color: #ec23ec;
     font-size: 3rem;
+    font-family: var(--primary-font);
+}
+
+p{
+    font-size: 20px;
+    font-family: var(--secondary-font);
+    color: #ffffff;
 }
 
 .btn-group {
@@ -147,10 +165,11 @@ h2 {
     margin: 5px;
     border-radius: 30px;
     box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.78);
+    border-color: #34fcfc;
 }
 
 .btn.active {
-    border-color: #007ced;
+    border-color: #34fcfc;
 }
 
 .social a {
@@ -158,6 +177,7 @@ h2 {
     color: #e5e5e5;
     font-size: 18px;
     transition: 0.5s;
+    font-family: var(--primary-font);
 }
 
 .social a:hover {
