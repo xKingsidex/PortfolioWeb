@@ -41,26 +41,14 @@ L'objectif de ce projet est de concevoir un site web personnel interactif, moder
 - **Backend optionnel** : Utilisation de Firebase, Strapi ou un CMS headless pour la gestion de contenu.
 - **Hébergement et déploiement** : Netlify, Vercel ou GitHub Pages.
 
-## 5. Charte Graphique
-
-### a) Description des couleurs et typographie
-
-- **Palette de couleurs** :
-  - Couleur principale : Bleu foncé (#0A192F) pour la cybersécurité et le professionnalisme.
-  - Couleur secondaire : Gris clair (#E0E0E0) pour le contraste et la lisibilité.
-  - Couleur d’accentuation : Vert (#00FF00) pour les éléments interactifs et les succès (ex : certifications validées).
-- **Typographie** :
-  - Police principale : "Poppins" ou "Fira Code" (idéal pour l’affichage de code et technique).
-  - Police secondaire : "Roboto" pour les paragraphes.
-
-## 6. Contraintes
+## 5. Contraintes
 
 - **Responsivité** : Le site doit être entièrement adaptable aux écrans mobiles, tablettes et ordinateurs.
 - **Performance** : Temps de chargement optimisé (< 2s) et lazy loading pour les images.
 - **Accessibilité** : Respect des normes WCAG 2.1 pour assurer l’accès aux personnes en situation de handicap.
 - **Sécurité** : HTTPS obligatoire, protection contre les injections XSS/CSRF, validation des entrées utilisateurs.
 
-## 7. Réglementation
+## 6. Réglementation
 
 ### a) Mentions Légales
 
@@ -76,11 +64,11 @@ L'objectif de ce projet est de concevoir un site web personnel interactif, moder
 - Respect des bonnes pratiques de référencement (balises meta, sitemap.xml, structured data, etc.).
 - Optimisation des performances (Google PageSpeed Insights > 90%).
 
-# UML
+# 7. UML
 
 ![Diagramme sans nom drawio](https://github.com/user-attachments/assets/84ec26c5-65e7-4792-bd8f-6a98ffe90fb1)
 
-# Charte graphique
+# 8. Charte graphique
 
 ## a) Logo
 
