@@ -328,3 +328,41 @@ li {
     overflow-wrap: break-word; /* Assure la coupure si nécessaire */
     white-space: normal; /* Permet aux phrases de revenir à la ligne */
 }
+.block{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 95vh;
+}
+.text{
+    
+    background: rgba(34, 34, 34, 0.7);
+    border: 5px solid  #ec23ec;
+    border-radius: 8px; 
+    max-width: 800px;
+    padding: 20px; 
+    width: 100%; /* Assure que le paragraphe occupe tout l'espace du bloc */
+    word-wrap: break-word; /* Coupe les mots si besoin */
+    overflow-wrap: break-word; /* Assure la coupure si nécessaire */
+    white-space: normal; /* Permet aux phrases de revenir à la ligne */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 200px;
+    
+}
+
+.text a {
+    margin: 0 10px;
+    color: #34fcfc;
+    font-size: 30px;
+    transition: 0.5s;
+    
+}
+
+.text p {
+    font-size: 50px;
+    font-family: var(--secondary-font);
+}
