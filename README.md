@@ -78,13 +78,36 @@ L'objectif de ce projet est de concevoir un site web personnel interactif, moder
 
 # UML
 
+![Diagramme sans nom drawio](https://github.com/user-attachments/assets/84ec26c5-65e7-4792-bd8f-6a98ffe90fb1)
+
 # Charte graphique
+
+## a) Logo
+
 ![logo](https://github.com/user-attachments/assets/dccec14e-3565-40e8-9edf-4a2bb8155713)
 
-## 1. Logo
+## b) Couleurs
 
+![palette couleur](https://github.com/user-attachments/assets/612e7f58-1e50-4191-84f4-5174750fc922)
 
+### Noir profond : #000000
+Pour le fond ou les textes principaux. Représente l'élégance et le professionnalisme.
 
+### Blanc pur : #FFFFFF
+Pour les espaces négatifs, les contrastes, et la lisibilité.
 
+### Cyan vif : #34fcfc
+Accent pour les liens, les boutons interactifs, et les animations.
+
+### Magenta éclatant : #ec23ec
+Utilisé comme second accent pour les surlignages, les éléments visuels, ou les hover d’éléments.
+
+### Gris neutre clair : #F5F5F5
+Pour les fonds de sections, afin de segmenter le contenu sans perturber la lisibilité.
+
+## c) Typographie
+
+### Exo 2
+### Teko
 
 
