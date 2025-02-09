@@ -296,7 +296,7 @@ li {
 
 /* Partie experience html*/
 
-.body2 {
+.bodyExperience {
     overflow-x: hidden;
     background: rgb(9,5,99);
 background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgba(0,165,172,1) 100%);
@@ -362,10 +362,6 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
     
     
 }
-/* Effet de bande hexagonale animée */
-/* Bande d'hexagones animée en continu */
-
-
 
 .hero-text3 p{
 
@@ -449,9 +445,8 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
 }
 
 .project-display {
-    background: rgba(0, 0, 0, 0.7);
-    border: 5px solid var(--other-color);
-    border-radius: 8px;
+    
+    
     max-width: 800px;
     padding: 20px;
     width: 100%;
@@ -462,14 +457,22 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
 }
 
 #project-details {
+    width: 600px;  
+    height: 200px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-family: Arial, sans-serif;
+    padding: 20px;
+    
 }
 
-#project-details h2 {
+
+#project-details h1 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color:#e5e5e5;
 }
 
 #project-details p {
@@ -481,8 +484,8 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    background: #111;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.7);
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -500,6 +503,7 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
     transition: color 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: var(--primary-font);
 }
 
 .menu-item::after {
@@ -522,6 +526,55 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
     width: 100%;
 }
 
+.project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.Portfolio-title {
+    color: #ffffff;
+    font-family: var(--other-font);
+    font-size: 30px;
+    
+}
+
+
+.Poulailler-title {
+    color: #ffffff;
+    font-family: var(--other-font);
+    font-size: 30px;
+    
+}
+
+
+.Potoo-title {
+    color: #ffffff;
+    font-family: var(--other-font);
+    font-size: 30px;
+    
+}
+
+.Portfolio-image {
+    width: 110%;
+    
+    border-radius: 15px;
+    
+}
+.Poulailler-image {
+    width: 50%;
+    
+    border-radius: 20px;
+}
+
+.Potoo-image {
+    width: 80%;
+    
+    border-radius: 15px;
+}
 
   
 

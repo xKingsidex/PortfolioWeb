@@ -32,23 +32,34 @@
         <section class="content">
           <div class="project-display">
             <div id="project-details">
-              <h2>Bienvenue</h2>
-              <p>Sélectionnez un projet à droite pour en voir les détails.</p>
+                
             </div>
           </div>
           <aside class="menu">
-            <button class="menu-item" onclick="showProject('Projet 1', 'Description du projet 1.')">Projet 1</button>
-            <button class="menu-item" onclick="showProject('Projet 2', 'Description du projet 2.')">Projet 2</button>
-            <button class="menu-item" onclick="showProject('Projet 3', 'Description du projet 3.')">Projet 3</button>
+            <button class="menu-item" onclick="showProject('Portfolio Web', 'assets/img/portfolioPhoto.JPG', 'Portfolio')">
+                1. Portfolio Web
+            </button>
+            <button class="menu-item" onclick="showProject('Poulailler Connecté', 'assets/img/poulailler.png', 'Poulailler')">
+                2. Poulailler Connecté
+            </button>
+            <button class="menu-item" onclick="showProject('Potoo World', 'assets/img/potooWorld.png', 'Potoo')">
+                3. Potoo World
+            </button>
           </aside>
         </section>
     </main>
     <script>
-        function showProject(title, description) {
-          const details = document.getElementById('project-details');
-          details.innerHTML = `<h2>${title}</h2><p>${description}</p>`;
+        function showProject(title, imageSrc, projectId) {
+            const details = document.getElementById('project-details');
+     
+            details.innerHTML = `
+                <div id="project-${projectId}" class="project-container">
+                    <h2 class="project-title ${projectId}-title">${title}</h2>
+                    <img class="project-image ${projectId}-image" src="${imageSrc}" alt="${title}"/>
+                </div>`;
         }
-    </script>
+     </script>
+     
     <footer >
         <p>© 2025 Mr FOULON. Tous droits réservés</p>
     </footer>
