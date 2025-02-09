@@ -19,14 +19,10 @@ body {
     overflow-x: hidden;
     background: url('../img/fondSite.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: #e5e5e5;
+    
 }
 
-body {
-    
-    
-    color: #e5e5e5;
-}
+
 
 body {
     animation: fadeIn 1.5s ease-in-out;
@@ -298,10 +294,21 @@ li {
 
 .bodyExperience {
     overflow-x: hidden;
-    background: rgb(9,5,99);
-background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgba(0,165,172,1) 100%);
+
+    /* Dégradé de base */
+    background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgba(0,165,172,1) 100%);
+
+    /* Superposition du motif hexagonal */
+    background-image: 
+        linear-gradient(90deg, rgba(9,5,99,0.9) 0%, rgba(47,52,162,0.9) 53%, rgba(0,165,172,0.9) 100%),
+        url('https://www.transparenttextures.com/patterns/hexellence.png'); /* Motif hexagonal */
+
+    background-size: cover, 150px 150px; /* Taille du motif */
+    background-blend-mode: overlay; /* Mélange du motif et du dégradé */
+
     color: #e5e5e5;
 }
+
 
 .hero-pic2 {
     width: 300px;
@@ -423,10 +430,23 @@ background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgb
 
 .bodyProject {
     overflow-x: hidden;
-    background: rgb(9,5,99);
+
+    /* Dégradé de base */
     background: linear-gradient(90deg, rgba(9,5,99,1) 0%, rgba(47,52,162,1) 53%, rgba(0,165,172,1) 100%);
+
+    /* Superposition du motif hexagonal */
+    background-image: 
+        linear-gradient(90deg, rgba(9,5,99,0.9) 0%, rgba(47,52,162,0.9) 53%, rgba(0,165,172,0.9) 100%),
+        url('https://www.transparenttextures.com/patterns/hexellence.png'); /* Motif hexagonal */
+
+    background-size: cover, 150px 150px; /* Taille du motif */
+    background-blend-mode: overlay; /* Mélange du motif et du dégradé */
+
     color: #e5e5e5;
 }
+
+
+
 
 .mainProject {
     display: flex;
