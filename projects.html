@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jean Pierre</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body class="bodyProject">
+    <header>
+        <nav>
+            <div id="logo">
+                <div><img src="assets/img/logo.png" class="logoP" ></div>
+            </div>            
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Portfolio</a>
+                    <ul class="dropdown-content">
+                        <li><a href="experience.html">Expérience personnelle</a></li>
+                        <li><a href="projects.html">Projets</a></li>
+                    </ul>
+                </li>              
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="mainProject"   >
+        <section class="content">
+          <div class="project-display">
+            <div id="project-details">
+              <h2>Bienvenue</h2>
+              <p>Sélectionnez un projet à droite pour en voir les détails.</p>
+            </div>
+          </div>
+          <aside class="menu">
+            <button class="menu-item" onclick="showProject('Projet 1', 'Description du projet 1.')">Projet 1</button>
+            <button class="menu-item" onclick="showProject('Projet 2', 'Description du projet 2.')">Projet 2</button>
+            <button class="menu-item" onclick="showProject('Projet 3', 'Description du projet 3.')">Projet 3</button>
+          </aside>
+        </section>
+    </main>
+    <script>
+        function showProject(title, description) {
+          const details = document.getElementById('project-details');
+          details.innerHTML = `<h2>${title}</h2><p>${description}</p>`;
+        }
+    </script>
+    <footer >
+        <p>© 2025 Mr FOULON. Tous droits réservés</p>
+    </footer>
+</body>
+</html>
