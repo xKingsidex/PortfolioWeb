@@ -85,6 +85,7 @@ nav ul li a {
     border-radius: 20px;
     transition: all 0.3s ease;
     position: relative;
+    font-size: 20px;
 }
 /*Underline effect*/
 nav ul li a::after {
@@ -382,6 +383,7 @@ li {
     word-wrap: break-word; /* Coupe les mots si besoin */
     overflow-wrap: break-word; /* Assure la coupure si nécessaire */
     white-space: normal; /* Permet aux phrases de revenir à la ligne */
+    line-height: 1.8;
 }
 
 .hero-section3 {
@@ -409,6 +411,7 @@ li {
     word-wrap: break-word; /* Coupe les mots si besoin */
     overflow-wrap: break-word; /* Assure la coupure si nécessaire */
     white-space: normal; /* Permet aux phrases de revenir à la ligne */
+    line-height: 1.8;
 }
 
 @media (max-width: 768px) {
@@ -426,46 +429,75 @@ li {
 }
 
 /*Page contact*/
-.block{
-    
+
+
+body.contact-page {
+    overflow-x: hidden;
+    background: url('../img/fondSite.jpg') no-repeat center center fixed;
+    background-size: cover;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.contact-page .block {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     min-height: 95vh;
 }
-.text{
-    
+
+.contact-page .form-container {
     background: rgba(0, 0, 0, 0.7);
     border: 5px solid var(--other-color);
     border-radius: 8px; 
-    max-width: 800px;
+    max-width: 500px;
     padding: 20px; 
-    width: 100%; /* Assure que le paragraphe occupe tout l'espace du bloc */
-    word-wrap: break-word; /* Coupe les mots si besoin */
-    overflow-wrap: break-word; /* Assure la coupure si nécessaire */
-    white-space: normal; /* Permet aux phrases de revenir à la ligne */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     margin-top: 150px;
-    
 }
 
-.text a {
-    margin: 0 10px;
-    color: #34fcfc;
-    font-size: 20px;
-    
-    transition: all 0.3s ease-in-out;
-    filter: drop-shadow(0px 0px 10px var(--primary-color));
-    
+.contact-page h2 {
+    color: #ffffff;
+    font-family: var(--primary-font);
 }
 
-.text p {
-    font-size: 30px;
+.contact-page label {
+    color: #ffffff;
     font-family: var(--other-font);
 }
+
+.contact-page input, .contact-page textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-family: var(--other-font);
+}
+
+.contact-page button {
+    border: 2px solid var(--primary-color);
+    color: #fff;
+    background-color: #333;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-page button:hover {
+    background-color: var(--primary-color);
+}
+
 
 @media (max-width: 768px) {
 
