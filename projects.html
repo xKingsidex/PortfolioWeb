@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - FOULON Enzo</title>
+    <title>Projets - FOULON Enzo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2c3e50;
+            --dark: #1a2533;
+            --light: #ffffff;
+            --gray: #cccccc;
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -15,18 +26,54 @@
         }
         
         body {
-            font-family: 'Exo 2', sans-serif;
-            background: linear-gradient(135deg, #2c3e50, #1a2533);
-            color: #ffffff;
+            font-family: 'Inter', 'Exo 2', sans-serif;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            color: var(--light);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        /* Stars background animation */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            animation-name: twinkle;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+        
+        @keyframes twinkle {
+            0% {opacity: 0;}
+            50% {opacity: 0.8;}
+            100% {opacity: 0;}
         }
         
         header {
             background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
         
         nav {
@@ -44,8 +91,16 @@
         }
         
         .logoP {
-            height: 50px;
+            height: 55px;
             width: auto;
+            transition: transform 0.5s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
         }
         
         nav ul {
@@ -55,33 +110,54 @@
         
         nav ul li {
             position: relative;
-            margin-left: 2rem;
+            margin-left: 2.5rem;
         }
         
         nav ul li a {
-            color: #ffffff;
+            color: var(--light);
             text-decoration: none;
             font-size: 1.1rem;
-            transition: color 0.3s;
+            transition: var(--transition);
             font-family: 'Teko', sans-serif;
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 500;
             font-size: 1.3rem;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
         }
         
         nav ul li a:hover {
-            color: #3498db;
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
         }
         
         .dropdown-content {
             display: none;
             position: absolute;
             background-color: rgba(0, 0, 0, 0.9);
-            min-width: 160px;
+            min-width: 180px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
             border-radius: 5px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            top: 100%;
+            left: 0;
         }
         
         .dropdown-content li {
@@ -92,147 +168,334 @@
             padding: 12px 16px;
             display: block;
             text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
         }
         
         .dropdown:hover .dropdown-content {
             display: block;
+            opacity: 1;
+            transform: translateY(5px);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light);
+            margin: 5px 0;
+            transition: var(--transition);
         }
         
         main {
-            padding: 3rem 5%;
-            max-width: 1400px;
+            flex: 1;
+            padding: 3rem 2rem; /* Ajusté les marges latérales */
+            max-width: 1600px; /* Taille plus optimale */
             margin: 0 auto;
             min-height: calc(100vh - 170px);
+            animation: fadeIn 1s ease;
+            width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .page-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+            display: block; /* Changé de inline-block à block */
+            padding-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content; /* Ajusté pour centrer correctement */
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
         }
         
         .content {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem; /* Augmenté pour un meilleur espacement entre projet et menu */
+            margin-top: 2rem;
+            width: 100%;
+            justify-content: center;
+            align-items: center; /* Centre verticalement */
         }
         
         .project-display {
-            flex: 3;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            min-height: 500px;
+            flex: 6; /* Réduit pour donner plus de place au menu */
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            min-height: 650px;
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin: 0;
+            max-width: 1000px; /* Légèrement réduit */
+        }
+        
+        .project-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0) 70%);
+            z-index: -1;
+        }
+        
+        .project-display:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
         
         #project-details {
             width: 100%;
-            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: none; /* Supprimé la limitation de largeur */
+            margin: 0; /* Supprimé le centrage */
         }
         
         .project-container {
             width: 100%;
+            animation: slideIn 0.5s ease;
+            padding: 0 1.5rem; /* Légèrement augmenté pour un meilleur espacement */
+            max-width: 90%; /* Optimisé pour un meilleur équilibre visuel */
+            margin: 0 auto; /* Centre le contenu */
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         
         .project-title {
             font-family: 'Teko', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #3498db;
+            font-size: 3.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary);
         }
         
         .project-image {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1.5rem;
-            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            max-height: 450px; /* Taille optimisée */
+            height: 450px; /* Hauteur fixe optimisée */
             object-fit: cover;
+            border: 3px solid rgba(52, 152, 219, 0.2);
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.02);
         }
         
         .project-description {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-size: 1.15rem;
             line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .project-tech {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 1.5rem;
+            gap: 12px;
+            margin-bottom: 2rem;
         }
         
         .tech-tag {
-            background-color: rgba(52, 152, 219, 0.2);
-            color: #3498db;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            background-color: rgba(52, 152, 219, 0.15);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            background-color: rgba(52, 152, 219, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
         }
         
         .project-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 20px;
         }
         
         .project-link {
-            padding: 10px 20px;
-            background-color: #3498db;
+            padding: 12px 24px;
+            background-color: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
+            border-radius: 50px;
+            transition: all 0.4s;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+            z-index: -1;
         }
         
         .project-link:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .project-link:hover::before {
+            width: 100%;
         }
         
         .menu {
-            flex: 1;
+            flex: 1; /* Augmenté significativement pour une meilleure proportion */
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
+            min-width: 250px; /* Augmenté pour plus de visibilité */
+            max-width: 300px; /* Limité la largeur maximale */
+            align-self: center; /* Centre le menu verticalement */
+            height: fit-content; /* Empêche le menu de s'étirer sur toute la hauteur */
+            margin: auto 0; /* Centre verticalement */
         }
         
         .menu-item {
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: none;
-            border-radius: 8px;
+            padding: 1.2rem 1.5rem; /* Augmenté pour plus d'espace */
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s;
             font-family: 'Exo 2', sans-serif;
-            color: #ffffff;
+            color: var(--light);
             text-align: left;
-            font-size: 1.1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem; /* Augmenté pour meilleure lisibilité */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.4s;
         }
         
         .menu-item:hover {
-            background-color: rgba(52, 152, 219, 0.3);
+            background-color: rgba(0, 0, 0, 0.3);
             transform: translateX(5px);
         }
         
+        .menu-item:hover::before {
+            transform: scaleY(1);
+        }
+        
         .menu-item.active {
-            background-color: rgba(52, 152, 219, 0.5);
-            border-left: 4px solid #3498db;
+            background-color: rgba(52, 152, 219, 0.15);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+        }
+        
+        .menu-item i {
+            font-size: 1.4rem; /* Augmenté pour meilleure visibilité */
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover i {
+            transform: rotate(10deg);
         }
         
         footer {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 1.5rem;
             text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         footer p {
-            font-size: 0.9rem;
-            color: #cccccc;
+            font-size: 0.95rem;
+            color: var(--gray);
         }
         
         .empty-project {
@@ -241,22 +504,192 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            text-align: center;
+        }
+        
+        .empty-project h3 {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .empty-project p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 80%;
+            margin: 0 auto;
+        }
+        
+        .empty-project i {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            opacity: 0.5;
         }
         
         .placeholder-image {
             width: 100%;
-            height: 250px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            height: 450px; /* Optimisé pour correspondre à project-image */
+            max-height: 450px; /* Assuré la cohérence avec project-image */
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+        
+        .placeholder-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .placeholder-image:hover {
+            transform: translateY(-5px);
+        }
+        
+        .placeholder-image i {
+            font-size: 5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .placeholder-image p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            font-weight: 500;
+            z-index: 1;
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(52, 152, 219, 0.5);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(52, 152, 219, 0.7);
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 992px) {
+            .content {
+                flex-direction: column-reverse;
+                gap: 2rem;
+                align-items: stretch; /* Revient à normal en mode responsive */
+            }
+            
+            .project-display {
+                width: 100%;
+                min-height: 600px;
+                max-width: 100%;
+            }
+            
+            .menu {
+                max-width: 100%;
+                width: 100%;
+                margin: 0; /* Supprime les marges en mode responsive */
+                align-self: stretch; /* Prend toute la largeur en responsive */
+            }
+            
+            #project-details {
+                max-width: 100%;
+            }
         }
         
         @media (max-width: 768px) {
-            .content {
-                flex-direction: column-reverse;
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.3s, transform 0.3s;
+                z-index: 100;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            nav ul.active {
+                display: flex;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active div:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            
+            .hamburger.active div:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active div:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -8px);
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                min-width: auto;
+                box-shadow: none;
+                opacity: 1;
+                transform: none;
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 5px;
+                margin-top: 10px;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
             }
             
             .menu {
@@ -266,34 +699,65 @@
             }
             
             .menu-item {
-                min-width: 200px;
+                min-width: 200px; /* Réduit de 220px à 200px */
+                flex-shrink: 0;
+            }
+            
+            .project-display {
+                padding: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 2.3rem;
+            }
+            
+            .project-description {
+                font-size: 1rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .project-link {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
+    <div class="stars" id="stars"></div>
+    
     <header>
         <nav>
             <div id="logo">
-                <div><img src="assets/img/logo.png" class="logoP"></div>
+                <div><img src="assets/img/logo.png" class="logoP" alt="Logo Enzo FOULON"></div>
             </div>            
-            <ul>
+            <ul id="navMenu">
                 <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Portfolio</a>
-                    <ul class="dropdown-content">
-                        <li><a href="projects.html">Projets</a></li>
-                    </ul>
-                </li>              
+                
+                <li><a href="projects.html">Projets</a></li>
+                   
+                             
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
     </header>
+    
     <main>
+        <h1 class="page-title">Mes Projets</h1>
         <section class="content">
             <div class="project-display">
                 <div id="project-details">
                     <div class="empty-project">
+                        <i class="fas fa-code-branch"></i>
                         <h3>Sélectionnez un projet pour voir les détails</h3>
                         <p>Cliquez sur un des projets dans le menu pour afficher ses informations</p>
                     </div>
@@ -301,18 +765,83 @@
             </div>
             <aside class="menu">
                 <button class="menu-item" onclick="showProject('Projet 1', 'À venir...', 'projet1', 'Description à venir...', ['HTML', 'CSS', 'JavaScript'])">
-                    1. Projet 1
+                    <i class="fas fa-laptop-code"></i> Projet 1 - Site Web
                 </button>
                 <button class="menu-item" onclick="showProject('Projet 2', 'À venir...', 'projet2', 'Description à venir...', ['React', 'Node.js'])">
-                    2. Projet 2
+                    <i class="fas fa-mobile-alt"></i> Projet 2 - Application Mobile
                 </button>
                 <button class="menu-item" onclick="showProject('Projet 3', 'À venir...', 'projet3', 'Description à venir...', ['Python', 'Django'])">
-                    3. Projet 3
+                    <i class="fas fa-shield-alt"></i> Projet 3 - Sécurité Web
                 </button>
             </aside>
         </section>
     </main>
+    
+    <footer>
+        <p>&copy; 2025 FOULON Enzo. Tous droits réservés</p>
+    </footer>
     <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a nav link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Stars background animation
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random positioning
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                
+                // Random animation delay
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Create stars when page loads
+        window.addEventListener('load', createStars);
+        
+        // Scroll-based animations
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.4)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.7)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+            }
+        });
+        
+        // Project display functionality
         function showProject(title, imageText, projectId, description, technologies) {
             const details = document.getElementById('project-details');
             
@@ -331,8 +860,8 @@
             } else {
                 imageContent = `
                     <div class="placeholder-image">
-                        <i class="fas fa-code fa-3x" style="color: #3498db;"></i>
-                        <p style="margin-top: 10px;">${imageText}</p>
+                        <i class="fas fa-code fa-3x" aria-hidden="true"></i>
+                        <p>${imageText}</p>
                     </div>
                 `;
             }
@@ -359,14 +888,15 @@
         
         // Sélectionner le premier projet par défaut
         document.addEventListener('DOMContentLoaded', function() {
-            const firstProject = document.querySelector('.menu-item');
-            if (firstProject) {
-                firstProject.click();
-            }
+            // Delay for better animation effect
+            setTimeout(() => {
+                const firstProject = document.querySelector('.menu-item');
+                if (firstProject) {
+                    firstProject.click();
+                }
+            }, 500);
         });
     </script>
-    <footer>
-        <p>© 2025 FOULON Enzo. Tous droits réservés</p>
-    </footer>
 </body>
 </html>
+
