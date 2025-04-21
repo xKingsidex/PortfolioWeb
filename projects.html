@@ -705,6 +705,7 @@
             
             .project-display {
                 padding: 1.5rem;
+                min-height: auto; /* Hauteur adaptative pour les mobiles */
             }
             
             .project-title {
@@ -723,6 +724,61 @@
             .project-link {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            /* Correction spécifique pour l'affichage des images sur mobile */
+            .project-image {
+                height: 300px; /* Hauteur réduite pour les mobiles */
+                object-position: center; /* Centrer l'image */
+            }
+            
+            .placeholder-image {
+                height: 300px; /* Même hauteur pour les placeholders */
+                max-height: 300px;
+            }
+            
+            .project-container {
+                max-width: 100%; /* Utilise toute la largeur disponible */
+                padding: 0 0.5rem; /* Marges réduites */
+            }
+        }
+        
+        /* Ajustements pour les très petits écrans */
+        @media (max-width: 480px) {
+            main {
+                padding: 2rem 1rem; /* Marges réduites */
+            }
+            
+            .project-image {
+                height: 220px; /* Encore plus petit pour les très petits écrans */
+            }
+            
+            .placeholder-image {
+                height: 220px;
+                max-height: 220px;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .project-tech {
+                justify-content: center; /* Centre les tags technologies */
+            }
+            
+            .tech-tag {
+                margin-bottom: 0.5rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .project-display {
+                padding: 1rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             }
         }
     </style>
