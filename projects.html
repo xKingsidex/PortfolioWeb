@@ -764,15 +764,19 @@
                 </div>
             </div>
             <aside class="menu">
-                <button class="menu-item" onclick="showProject('Projet 1', 'À venir...', 'projet1', 'Description à venir...', ['HTML', 'CSS', 'JavaScript'])">
+                <button class="menu-item" onclick="showProject('Projet 1', 'assets/img/projet2.avif', 'projet1', 'Site pour restaurant pour apporter de la visibilité, le site comprend une base de données pour faire des réservations et créer des comptes.', ['HTML', 'CSS', 'PHP'], 'https://resto-db-enzo.nextborn.ovh/site.php', 'https://github.com/xKingsidex/Resto_BDD')">
                     <i class="fas fa-laptop-code"></i> Projet 1 - Site Web
                 </button>
-                <button class="menu-item" onclick="showProject('Projet 2', 'À venir...', 'projet2', 'Description à venir...', ['React', 'Node.js'])">
-                    <i class="fas fa-mobile-alt"></i> Projet 2 - Application Mobile
+                <button class="menu-item" onclick="showProject('Projet 2', 'assets/img/projet1.webp', 'projet2', 'Plateforme social sur une base de twitter, API crypto et manga à venir.', ['MongoDB', 'Next.js', 'API'], 'https://sociallyapp.vercel.app/', 'https://github.com/xKingsidex/Socially')">
+                    <i class="fas fa-mobile-alt"></i> Projet 2 - Réseau Social
                 </button>
-                <button class="menu-item" onclick="showProject('Projet 3', 'À venir...', 'projet3', 'Description à venir...', ['Python', 'Django'])">
-                    <i class="fas fa-shield-alt"></i> Projet 3 - Sécurité Web
+                <button class="menu-item" onclick="showProject('Projet 3', 'assets/img/projet3.avif', 'projet3', 'Réalisation de mon portfolio en Web.', ['HTML', 'CSS'], 'https://portfolio-foulon-enzo.vercel.app/', 'https://github.com/xKingsidex/PortfolioWeb')">
+                    <i class="fas fa-shield-alt"></i> Projet 3 - Portfolio Web
                 </button>
+                <button class="menu-item" onclick="showProject('Projet 4', 'assets/img/projet4.avif', 'projet4', 'Réalisation d\'une plateforme de gestion de projet comme un Trello.', ['Symfony', 'PHP'], 'https://tasksphere-enzo.nextborn.ovh/login', 'https://github.com/xKingsidex/Task-Sphere-Managment')">
+                    <i class="fas fa-brain"></i> Projet 4 - Gestion de projet
+                </button>
+                
             </aside>
         </section>
     </main>
@@ -841,50 +845,50 @@
             }
         });
         
-        // Project display functionality
-        function showProject(title, imageText, projectId, description, technologies) {
-            const details = document.getElementById('project-details');
-            
-            // Créer la liste des technologies
-            let techTags = '';
-            if (technologies && technologies.length > 0) {
-                technologies.forEach(tech => {
-                    techTags += `<span class="tech-tag">${tech}</span>`;
-                });
-            }
-            
-            // Si une image est fournie, afficher l'image, sinon afficher un placeholder
-            let imageContent;
-            if (imageText.startsWith('assets/')) {
-                imageContent = `<img class="project-image" src="${imageText}" alt="${title}"/>`;
-            } else {
-                imageContent = `
-                    <div class="placeholder-image">
-                        <i class="fas fa-code fa-3x" aria-hidden="true"></i>
-                        <p>${imageText}</p>
-                    </div>
-                `;
-            }
-            
-            details.innerHTML = `
-                <div id="project-${projectId}" class="project-container">
-                    <h2 class="project-title">${title}</h2>
-                    ${imageContent}
-                    <p class="project-description">${description}</p>
-                    <div class="project-tech">
-                        ${techTags}
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link"><i class="fas fa-eye"></i> Voir projet</a>
-                        <a href="#" class="project-link"><i class="fab fa-github"></i> Code source</a>
-                    </div>
-                </div>`;
-                
-            // Mettre à jour la classe active
-            const buttons = document.querySelectorAll('.menu-item');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-        }
+        
+        function showProject(title, imageText, projectId, description, technologies, demoLink = "#", sourceLink = "#") {
+    const details = document.getElementById('project-details');
+    
+    // Créer la liste des technologies
+    let techTags = '';
+    if (technologies && technologies.length > 0) {
+        technologies.forEach(tech => {
+            techTags += `<span class="tech-tag">${tech}</span>`;
+        });
+    }
+    
+    // Si une image est fournie, afficher l'image, sinon afficher un placeholder
+    let imageContent;
+    if (imageText.startsWith('assets/')) {
+        imageContent = `<img class="project-image" src="${imageText}" alt="${title}"/>`;
+    } else {
+        imageContent = `
+            <div class="placeholder-image">
+                <i class="fas fa-code fa-3x" aria-hidden="true"></i>
+                <p>${imageText}</p>
+            </div>
+        `;
+    }
+    
+    details.innerHTML = `
+        <div id="project-${projectId}" class="project-container">
+            <h2 class="project-title">${title}</h2>
+            ${imageContent}
+            <p class="project-description">${description}</p>
+            <div class="project-tech">
+                ${techTags}
+            </div>
+            <div class="project-links">
+                <a href="${demoLink}" class="project-link" target="_blank"><i class="fas fa-eye"></i> Voir projet</a>
+                <a href="${sourceLink}" class="project-link" target="_blank"><i class="fab fa-github"></i> Code source</a>
+            </div>
+        </div>`;
+        
+    // Mettre à jour la classe active
+    const buttons = document.querySelectorAll('.menu-item');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
         
         // Sélectionner le premier projet par défaut
         document.addEventListener('DOMContentLoaded', function() {
